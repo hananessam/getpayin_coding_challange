@@ -7,10 +7,10 @@ use App\Http\Requests\RegisterRequest;
 use App\Services\Auth\AuthService;
 use App\Http\Controllers\Controller;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
     /**
-     * Create a new RegisterController instance.
+     * Create a new AuthController instance.
      */
     public function __construct(public AuthService $authService)
     {
