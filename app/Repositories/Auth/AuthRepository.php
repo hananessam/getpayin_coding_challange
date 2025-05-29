@@ -13,9 +13,9 @@ class AuthRepository implements AuthInterface
     {
     }
 
-    public function register(array $data)
+    public function register(array $data): User
     {
-        // Implement registration logic
+        return $this->user->create($data);
     }
 
     public function login(array $credentials)
