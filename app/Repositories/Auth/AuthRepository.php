@@ -29,8 +29,8 @@ class AuthRepository implements AuthInterface
         return null;
     }
 
-    public function logout()
+    public function logout(): bool
     {
-        // Implement logout logic
+        return auth()->user()->tokens()->delete();
     }
 }

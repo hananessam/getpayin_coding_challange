@@ -36,8 +36,8 @@ class AuthService
         ];
     }
 
-    public function logout()
+    public function logout(): bool
     {
-        // Implement logout logic
+        return $this->authRepository->logout();
     }
 }

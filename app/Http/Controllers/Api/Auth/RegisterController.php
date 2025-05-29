@@ -32,4 +32,10 @@ class RegisterController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function logout()
+    {
+        $this->authService->logout();
+        return response()->json(['message' => __('auth.logout')], 200);
+    }
 }

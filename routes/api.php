@@ -9,6 +9,8 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', [RegisterController::class, 'login']);
 });
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('/logout', [RegisterController::class, 'logout']);
+    });
+});
