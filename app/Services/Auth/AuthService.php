@@ -23,9 +23,17 @@ class AuthService
         ];
     }
 
-    public function login(array $credentials)
+    public function login(array $credentials): array|null
     {
-        // Implement login logic
+        $user = $this->authRepository->login($credentials);
+        if (!$user) {
+            return null;
+        }
+
+        return [
+            'user' => UserResource::make($user),
+            'token' => $user->createToken('auth_token')->plainTextToken,
+        ];
     }
 
     public function logout()

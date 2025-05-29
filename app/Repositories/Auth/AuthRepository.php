@@ -18,9 +18,15 @@ class AuthRepository implements AuthInterface
         return $this->user->create($data);
     }
 
-    public function login(array $credentials)
+    public function login(array $credentials): ?User
     {
-        // Implement login logic
+        $user = $this->user->where('email', $credentials['email'])->first();
+
+        if ($user && password_verify($credentials['password'], $user->password)) {
+            return $user;
+        }
+
+        return null;
     }
 
     public function logout()
