@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Platform\PlatformController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\Post\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 
@@ -13,6 +13,11 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/logout', [AuthController::class, 'logout']);
+    });
+
+    // Posts API
+    Route::group(['prefix' => 'posts'], function () {
+        Route::post('/', [PostController::class, 'createPost']);
     });
 });
 

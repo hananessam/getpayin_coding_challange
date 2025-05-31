@@ -20,6 +20,11 @@ class RepositoriesServiceProvider extends ServiceProvider
             \App\Repositories\Platform\Interfaces\PlatformInterface::class,
             \App\Repositories\Platform\PlatformRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Post\Interfaces\PostInterface::class,
+            \App\Repositories\Post\PostRepository::class
+        );
     }
 
     /**
